@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Copy check (no long dashes, both languages filled)
+        run: npm run check:copy
+      - name: Build
+        run: npm run build
+      - name: Smoke test with the access gate on
+        env:
+          ACCESS_CODES: CI-TEST
+        run: npm run test:smoke
