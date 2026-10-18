@@ -10,7 +10,7 @@ export const person = {
   city: "Kigali, Rwanda",
   timeZone: "Africa/Kigali",
   cv: t("/Plamedi-Mayala-CV-en.pdf", "/Plamedi-Mayala-CV-fr.pdf"),
-  url: "https://plamedi-mayala.vercel.app",
+  url: "https://plamedi-mayala-nu.vercel.app",
   links: [
     { label: "GitHub", href: "https://github.com/PMayala" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/plamedi-mayala-1b1681287/" },
