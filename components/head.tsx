@@ -5,7 +5,7 @@ export default function Head({ index, label, title, id, aside }: { index: string
   return (
     <div className="grid-12 gap-y-4 rule-strong pt-4">
       <p id={title ? undefined : id} className="col-span-12 flex items-baseline gap-3 md:col-span-3">
-        <span className="font-display text-[13px] font-bold text-accent num">{index}</span>
+        <span className="text-[13px] font-semibold text-accent num">{index}</span>
         <span className="text-[15px] font-medium">{label}</span>
       </p>
       {title && (

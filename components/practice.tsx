@@ -39,7 +39,7 @@ export default function Practice({ lang }: { lang: Locale }) {
             className="flex flex-col justify-center border-t border-line py-10 lg:min-h-[70vh] lg:py-0"
           >
             <div className="flex items-baseline gap-4">
-              <span className={`font-display text-[13px] font-bold num transition-colors ${i === active ? "text-accent" : "text-muted"}`}>0{i + 1}</span>
+              <span className={`text-[13px] font-semibold num transition-colors ${i === active ? "text-accent" : "text-muted"}`}>0{i + 1}</span>
               <h3 className={`text-[clamp(2rem,4.2vw,3.6rem)] font-medium leading-none tracking-[-0.035em] transition-colors duration-500 ${i === active ? "text-ink" : "lg:text-ink/25"}`}>{tr(p.title, lang)}</h3>
             </div>
             <div className={`pl-[calc(13px+1rem)] transition-opacity duration-500 ${i === active ? "opacity-100" : "lg:opacity-35"}`}>

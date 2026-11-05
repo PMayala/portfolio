@@ -102,7 +102,7 @@ export function GameFlow({ lang }: { lang: Locale }) {
         {flow.map((st, k) => (
           <li key={st.en} className="flex flex-col">
             <div className="flex items-baseline gap-3 border-t border-ink pt-3">
-              <span className="font-display text-[12px] font-bold text-accent num">0{k + 1}</span>
+              <span className="text-[12px] font-semibold text-accent num">0{k + 1}</span>
               <span className="text-[15px] font-medium">{tr(st, lang)}</span>
               <span className="text-[12px] text-muted">{st.frames.length}</span>
             </div>

@@ -72,10 +72,10 @@ export default function Header({ lang }: { lang: Locale }) {
     >
       <div className="page flex h-[var(--header)] items-center justify-between gap-4">
         <Link href={href(lang)} className="flex min-w-0 items-center gap-2.5" aria-label={`${person.name}, ${tr(copy.common.home, lang)}`}>
-          <span aria-hidden className="grid h-7 w-7 shrink-0 place-items-center rounded-[7px] bg-ink font-display text-[11px] font-extrabold tracking-[-0.04em] text-bg">
+          <span aria-hidden className="grid h-7 w-7 shrink-0 place-items-center rounded-[7px] bg-ink text-[11px] font-semibold tracking-normal text-bg">
             PM
           </span>
-          <span className="truncate font-display text-[14px] font-extrabold tracking-[-0.02em] sm:text-[15px]">PLAMEDI MAYALA</span>
+          <span className="truncate font-display text-[18px] font-extrabold leading-none tracking-[0.01em] sm:text-[20px] [word-spacing:0.12em]">PLAMEDI MAYALA</span>
         </Link>
 
         {!locked && (

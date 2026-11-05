@@ -80,7 +80,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ lang: st
           <span className="label ml-1">{tr(p.sector, lang)}</span>
         </div>
         <div className="fit-wrap mt-4 reveal">
-          <h1 className="font-display font-extrabold leading-[0.86] tracking-[-0.04em] whitespace-nowrap" style={{ fontSize: `min(13.5rem, calc(100cqi / ${titleEm(p.name)}))` }}>
+          <h1 className="font-display font-extrabold leading-[0.86] tracking-normal whitespace-nowrap" style={{ fontSize: `min(18rem, calc(100cqi / ${titleEm(p.name)}))` }}>
             <span className="line-mask">
               <span>{p.name}</span>
             </span>
@@ -168,7 +168,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ lang: st
             <ol className="border-t border-line">
               {p.did.map((d, i) => (
                 <li key={i} className="flex gap-6 border-b border-line py-4 t-body reveal">
-                  <span className="w-6 shrink-0 font-display text-[12px] font-bold text-accent num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="w-6 shrink-0 text-[12px] font-semibold text-accent num">{String(i + 1).padStart(2, "0")}</span>
                   <span>{tr(d, lang)}</span>
                 </li>
               ))}
@@ -182,7 +182,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ lang: st
         <section key={e} className="page mt-24 md:mt-36" aria-label={tr(copy.caseStudy.evidence[e].title, lang)}>
           <div className="grid-12 gap-y-3 rule-strong pt-4">
             <span className="col-span-12 flex items-baseline gap-3 md:col-span-3">
-              <span className="font-display text-[13px] font-bold text-accent num">{num()}</span>
+              <span className="text-[13px] font-semibold text-accent num">{num()}</span>
               <span className="text-[15px] font-medium">{tr(copy.caseStudy.evidence[e].title, lang)}</span>
             </span>
             <p className="col-span-12 text-[15px] text-muted md:col-span-9 lg:col-span-6">{tr(copy.caseStudy.evidence[e].lead, lang)}</p>
@@ -201,7 +201,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ lang: st
         <section className="page mt-24 md:mt-36" aria-label={tr(ui.screens, lang)}>
           <div className="grid-12 rule-strong pt-4">
             <span className="col-span-12 md:col-span-3 flex items-baseline gap-3">
-              <span className="font-display text-[13px] font-bold text-accent num">{num()}</span>
+              <span className="text-[13px] font-semibold text-accent num">{num()}</span>
               <span className="text-[15px] font-medium">{tr(ui.screens, lang)}</span>
             </span>
           </div>
@@ -236,7 +236,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ lang: st
             <div className="grid gap-px overflow-hidden rounded-md bg-line md:grid-cols-2">
               {p.decisions.map((d, i) => (
                 <div key={i} className={`bg-bg p-6 md:p-8 reveal ${p.decisions.length % 2 === 1 && i === p.decisions.length - 1 ? "md:col-span-2" : ""}`}>
-                  <span className="font-display text-[12px] font-bold text-accent num">D{i + 1}</span>
+                  <span className="text-[12px] font-semibold text-accent num">D{i + 1}</span>
                   <h3 className="t-md mt-6">{tr(d.title, lang)}</h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-muted">{tr(d.body, lang)}</p>
                 </div>
@@ -294,8 +294,9 @@ export default async function CaseStudy({ params }: { params: Promise<{ lang: st
 
 /** Approximate width of a name in em, so the title fills one line. */
 function titleEm(name: string) {
+  // Advance widths of Archivo at 62% width, in em, measured in the browser.
   let w = 0
-  for (const ch of name) w += /[A-Z0-9]/.test(ch) ? 0.86 : ch === " " ? 0.3 : /[.+]/.test(ch) ? 0.5 : 0.7
+  for (const ch of name) w += /[A-Z]/.test(ch) ? 0.49 : /[0-9]/.test(ch) ? 0.42 : ch === " " ? 0.12 : /[.+]/.test(ch) ? 0.22 : 0.39
   return (w * 1.03).toFixed(2)
 }
 
@@ -303,7 +304,7 @@ function Block({ n, title, children }: { n: string; title: string; children: Rea
   return (
     <section className="grid-12 gap-y-6">
       <div className="col-span-12 md:col-span-3 flex items-baseline gap-3 border-t border-ink pt-4">
-        <span className="font-display text-[13px] font-bold text-accent num">{n}</span>
+        <span className="text-[13px] font-semibold text-accent num">{n}</span>
         <h2 className="text-[15px] font-medium">{title}</h2>
       </div>
       <div className="col-span-12 md:col-span-9 lg:col-span-7 md:pt-4">{children}</div>

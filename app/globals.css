@@ -4,11 +4,12 @@
 
 /* ---------- Tokens ---------- */
 :root {
-  --bg: 242 241 236;
-  --surface: 250 250 247;
-  --ink: 18 18 17;
-  --muted: 104 103 98;
-  --accent: 35 64 208;
+  /* Colours taken from the CV: paper, ink, and one orange. */
+  --bg: 241 240 235;
+  --surface: 248 247 243;
+  --ink: 23 24 29;
+  --muted: 92 94 102;
+  --accent: 228 71 27;
   --accent-ink: 255 255 255;
   --ok: 22 135 76;
   --gutter: clamp(16px, 3.2vw, 48px);
@@ -18,29 +19,29 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: 14 14 13;
-  --surface: 24 24 22;
-  --ink: 236 234 228;
-  --muted: 146 144 137;
-  --accent: 120 140 255;
-  --accent-ink: 10 10 10;
+  --bg: 18 19 23;
+  --surface: 27 28 33;
+  --ink: 238 237 232;
+  --muted: 152 154 162;
+  --accent: 244 101 60;
+  --accent-ink: 18 19 23;
   --ok: 74 200 128;
   color-scheme: dark;
 }
 
 /* A section that is always dark, in both themes. */
 .band-dark {
-  --bg: 14 14 13;
-  --surface: 26 26 24;
-  --ink: 238 236 230;
-  --muted: 160 158 151;
-  --accent: 132 150 255;
-  --accent-ink: 10 10 10;
+  --bg: 23 24 29;
+  --surface: 32 33 39;
+  --ink: 241 240 235;
+  --muted: 160 162 170;
+  --accent: 244 101 60;
+  --accent-ink: 23 24 29;
   background: rgb(var(--bg));
   color: rgb(var(--ink));
 }
 :root[data-theme="dark"] .band-dark {
-  --bg: 22 22 21;
+  --bg: 27 28 33;
 }
 
 /* ---------- Base ---------- */
@@ -52,6 +53,8 @@
   }
   body {
     @apply bg-bg text-ink font-sans antialiased;
+    /* Inter at its Display optical size, as in the CV. */
+    font-variation-settings: "opsz" 32;
     font-size: 16px;
     line-height: 1.5;
   }
@@ -71,6 +74,12 @@
   img {
     user-select: none;
   }
+}
+
+/* The tall display face: Archivo at its narrowest width, set heavy and upright. */
+.font-display {
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
 }
 
 /* ---------- Layout ---------- */
@@ -108,16 +117,20 @@
   .t-mega {
     @apply font-display;
     font-weight: 800;
-    font-size: clamp(3.1rem, 11.4vw, 13.5rem);
-    line-height: 0.86;
-    letter-spacing: -0.035em;
+    font-stretch: 62%;
+    font-variation-settings: "wdth" 62;
+    font-size: clamp(4.4rem, 16.5vw, 19rem);
+    line-height: 0.84;
+    letter-spacing: -0.012em;
   }
   .t-xl {
     @apply font-display;
-    font-weight: 700;
-    font-size: clamp(2.2rem, 5.6vw, 6rem);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
+    font-weight: 800;
+    font-stretch: 62%;
+    font-variation-settings: "wdth" 62;
+    font-size: clamp(2.8rem, 7vw, 7.6rem);
+    line-height: 0.9;
+    letter-spacing: -0.005em;
   }
   .t-lg {
     font-weight: 500;
@@ -138,9 +151,11 @@
   .t-stat {
     @apply font-display num;
     font-weight: 800;
-    font-size: clamp(2.6rem, 5vw, 5.2rem);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+    font-stretch: 62%;
+    font-variation-settings: "wdth" 62;
+    font-size: clamp(3rem, 6vw, 6.2rem);
+    line-height: 0.88;
+    letter-spacing: -0.005em;
   }
 
   /* Links and buttons */
@@ -168,6 +183,26 @@
   .group:hover .arrow,
   a:hover > .arrow {
     transform: translate(3px, -3px);
+  }
+}
+
+/* The name in the hero fills the width: stacked on phones, one line from 768px. */
+.hero-name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-weight: 800;
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
+  line-height: 0.84;
+  letter-spacing: -0.005em;
+  font-size: calc(100cqi / 3.55);
+}
+@media (min-width: 768px) {
+  .hero-name {
+    flex-direction: row;
+    gap: 0.16em;
+    font-size: calc(100cqi / 6.62);
   }
 }
 

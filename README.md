@@ -1,6 +1,6 @@
 # Plamedi Mayala, portfolio
 
-Portfolio of a software engineer and product designer in Kigali. English and French, light and dark, built with Next.js 16 and Tailwind CSS, set in Zalando Sans. The site is private: visitors request access, and people with a code get in.
+Portfolio of a software engineer and product designer in Kigali. English and French, light and dark, built with Next.js 16 and Tailwind CSS, set in Archivo and Inter. The site is private: visitors request access, and people with a code get in.
 
 ## Run it
 
@@ -35,7 +35,7 @@ Testimonials appear on the home page as soon as `testimonials` in `lib/site.ts` 
 
 ## CV
 
-`npm run cv` rebuilds `public/Plamedi-Mayala-CV-en.pdf` and `-fr.pdf` from the same data as the site. It needs Chromium: `npx playwright install chromium`, or set `CHROMIUM_PATH`.
+The English CV, `public/Plamedi-Mayala-CV-en.pdf`, is the original file. `npm run cv` rebuilds the French one from the site data in the same design. It needs Chromium: `npx playwright install chromium`, or set `CHROMIUM_PATH`.
 
 ## CI and deploys
 

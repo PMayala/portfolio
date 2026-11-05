@@ -52,12 +52,15 @@ function Hero({ lang }: { lang: Locale }) {
           <span className="sr-only">
             {person.name}, {tr(hero.eyebrow, lang)}.{" "}
           </span>
-          <span aria-hidden className="t-mega block">
-            <span className="line-mask" data-drift="-48">
-              <span>PLAMEDI</span>
-            </span>
-            <span className="line-mask text-right" data-drift="48" style={{ ["--d" as string]: "120ms" }}>
-              <span className="text-accent">MAYALA</span>
+          {/* One line from tablets up, like the CV; two stacked lines on phones. */}
+          <span aria-hidden className="fit-wrap block">
+            <span className="hero-name">
+              <span className="line-mask" data-drift="-32">
+                <span>PLAMEDI</span>
+              </span>
+              <span className="line-mask" data-drift="32" style={{ ["--d" as string]: "120ms" }}>
+                <span className="text-accent">MAYALA</span>
+              </span>
             </span>
           </span>
         </h1>
@@ -200,7 +203,7 @@ function Contact({ lang, index }: { lang: Locale; index: string }) {
           {tr(contact.title, lang)}
         </h2>
         <div className="fit-wrap reveal mt-12">
-          <a href={`mailto:${person.email}`} className="block whitespace-nowrap font-display font-extrabold leading-[0.95] tracking-[-0.04em] transition-colors hover:text-accent" style={{ fontSize: "calc(100cqi / 16.4)" }}>
+          <a href={`mailto:${person.email}`} className="block whitespace-nowrap font-display font-extrabold leading-[0.95] tracking-normal transition-colors hover:text-accent" style={{ fontSize: "calc(100cqi / 10.9)" }}>
             {person.email}
           </a>
         </div>

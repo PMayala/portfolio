@@ -35,11 +35,11 @@ export function OpsCover({ lang }: { lang: Locale }) {
       </div>
       <div className="grid grid-cols-2 gap-[6%]">
         <div>
-          <div className="font-display text-[10.5cqi] font-extrabold leading-[0.85] tracking-[-0.04em] text-accent">50+</div>
+          <div className="font-display text-[10.5cqi] font-extrabold leading-[0.85] tracking-normal text-accent">50+</div>
           <div className="mt-2 text-[12px] text-muted">{tr(copy.ops.online, lang)}</div>
         </div>
         <div>
-          <div className="font-display text-[10.5cqi] font-extrabold leading-[0.85] tracking-[-0.04em]">8,000</div>
+          <div className="font-display text-[10.5cqi] font-extrabold leading-[0.85] tracking-normal">8,000</div>
           <div className="mt-2 text-[12px] text-muted">{tr(copy.ops.sessions, lang)}</div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export function SoonCover({ lang }: { lang: Locale }) {
     <div className="relative flex h-full w-full flex-col justify-between overflow-hidden bg-ink p-[6%] text-bg">
       <span className="text-[11px] uppercase tracking-[0.08em] opacity-60">{tr(copy.ops.soonKicker, lang)}</span>
       <div>
-        <div className="font-display text-[clamp(2rem,5vw,4.4rem)] font-extrabold leading-[0.9] tracking-[-0.04em]">{tr(copy.ops.soonTitle, lang)}</div>
+        <div className="font-display text-[clamp(2rem,5vw,4.4rem)] font-extrabold leading-[0.9] tracking-normal">{tr(copy.ops.soonTitle, lang)}</div>
         <p className="mt-3 max-w-[34ch] text-[13px] opacity-70">{tr(copy.ops.soonBody, lang)}</p>
       </div>
     </div>

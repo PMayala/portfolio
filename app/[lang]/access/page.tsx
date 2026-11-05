@@ -59,7 +59,7 @@ export default async function AccessPage({ params }: { params: Promise<{ lang: s
           <ul className="mt-4 border-t border-line">
             {a.inside.map((x, i) => (
               <li key={i} className="flex gap-4 border-b border-line py-3 text-[15px]">
-                <span className="font-display text-[12px] font-bold text-accent num">0{i + 1}</span>
+                <span className="text-[12px] font-semibold text-accent num">0{i + 1}</span>
                 {tr(x, lang)}
               </li>
             ))}
@@ -68,7 +68,7 @@ export default async function AccessPage({ params }: { params: Promise<{ lang: s
         <ul className="col-span-12 grid grid-cols-2 gap-px self-start overflow-hidden rounded-[10px] bg-line lg:col-span-6 lg:col-start-7">
           {stats.map((s, i) => (
             <li key={i} className="bg-bg p-5">
-              <div className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold tracking-[-0.03em] text-accent">{s.value}</div>
+              <div className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold tracking-normal text-accent">{s.value}</div>
               <p className="mt-2 text-[13px] leading-snug">{tr(s.label, lang)}</p>
             </li>
           ))}

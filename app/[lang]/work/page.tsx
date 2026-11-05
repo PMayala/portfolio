@@ -38,7 +38,7 @@ export default async function WorkPage({ params }: { params: Promise<{ lang: str
             return (
               <li key={d.key} className={`reveal py-6 pr-4 ${i > 0 ? "border-t border-line sm:border-l sm:border-t-0 sm:pl-6" : ""}`} style={{ ["--d" as string]: `${i * 80}ms` }}>
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-display text-[13px] font-bold text-accent num">0{i + 1}</span>
+                  <span className="text-[13px] font-semibold text-accent num">0{i + 1}</span>
                   <span className="text-[13px] text-muted num">{soon ? tr(copy.common.soon, lang) : `${n} ${tr(copy.common.projects, lang)}`}</span>
                 </div>
                 <h2 className="t-md mt-6">{tr(d.label, lang)}</h2>

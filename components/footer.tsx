@@ -15,7 +15,7 @@ export default function Footer({ lang }: { lang: Locale }) {
         <HideOnAccess>
         <div className="grid-12 mb-16 gap-y-10">
           <div className="col-span-12 lg:col-span-4">
-            <p className="font-display text-[15px] font-extrabold tracking-[-0.02em]">PLAMEDI MAYALA</p>
+            <p className="font-display text-[20px] font-extrabold tracking-normal">PLAMEDI MAYALA</p>
             <p className="mt-1 text-muted">{tr(copy.meta.role, lang)}, Kigali</p>
             <p className="mt-6 flex items-center gap-2">
               <span className="live-dot" aria-hidden /> {tr(ui.available, lang)}

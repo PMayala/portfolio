@@ -15,7 +15,7 @@ export default function OpsDiagram({ lang }: { lang: Locale }) {
       <ol className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-md bg-line sm:grid-cols-5">
         {c.steps.map((st, i) => (
           <li key={i} className="relative bg-surface p-4 md:p-5">
-            <span className="font-display text-[12px] font-bold text-accent num">0{i + 1}</span>
+            <span className="text-[12px] font-semibold text-accent num">0{i + 1}</span>
             <div className="mt-6 text-[17px] font-medium leading-tight">{tr(st.k, lang)}</div>
             <div className="mt-1 text-[13px] leading-snug text-muted">{tr(st.s, lang)}</div>
             {i < c.steps.length - 1 && (

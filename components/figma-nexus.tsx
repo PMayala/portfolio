@@ -22,7 +22,7 @@ export default function FigmaNexus({ lang }: { lang: Locale }) {
         <ol className="border-t border-ink">
           {f.parts.map((p, i) => (
             <li key={i} className="reveal grid grid-cols-[2.5rem_1fr] gap-x-2 border-b border-line py-6">
-              <span className="font-display text-[12px] font-bold text-accent num">0{i + 1}</span>
+              <span className="text-[12px] font-semibold text-accent num">0{i + 1}</span>
               <div>
                 <h3 className="text-[20px] font-medium tracking-[-0.01em]">{tr(p.title, lang)}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted">{tr(p.body, lang)}</p>

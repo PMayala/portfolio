@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { isLocale, tr } from "@/i18n"
-import { about, capabilities, education, experience, languages, person, principles, ui } from "@/lib/site"
+import { about, capabilities, education, experience, languages, person, principles, referees, ui } from "@/lib/site"
 import { href } from "@/lib/nav"
 import { copy } from "@/lib/copy"
 import { pageMeta } from "@/lib/seo"
@@ -67,7 +67,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         <ol className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-[10px] bg-line sm:grid-cols-3 lg:grid-cols-6">
           {about.timeline.map((m, i) => (
             <li key={m.year} className="reveal bg-bg p-5 md:p-6" style={{ ["--d" as string]: `${i * 70}ms` }}>
-              <span className="font-display text-[clamp(1.6rem,2.6vw,2.4rem)] font-extrabold tracking-[-0.03em] text-accent num">{m.year}</span>
+              <span className="font-display text-[clamp(1.6rem,2.6vw,2.4rem)] font-extrabold tracking-normal text-accent num">{m.year}</span>
               <p className="mt-4 text-[14px] leading-snug">{tr(m.text, lang)}</p>
             </li>
           ))}
@@ -120,7 +120,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
               <div key={c.key} className="reveal bg-bg py-8 sm:px-6 lg:px-8" style={{ ["--d" as string]: `${i * 60}ms` }}>
                 <div className="flex items-baseline justify-between">
                   <h3 className="t-md">{tr(c.title, lang)}</h3>
-                  <span className="font-display text-[12px] font-bold text-accent num">0{i + 1}</span>
+                  <span className="text-[12px] font-semibold text-accent num">0{i + 1}</span>
                 </div>
                 <p className="mt-2 text-[14px] text-muted">{tr(c.line, lang)}</p>
                 <ul className="mt-6 flex flex-wrap gap-1.5">
@@ -145,7 +145,7 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
         <ol className="mt-12">
           {principles.map((p, i) => (
             <li key={i} className="grid-12 reveal items-baseline gap-y-2 border-b border-line py-7">
-              <span className="col-span-2 font-display text-[13px] font-bold text-accent num md:col-span-3">0{i + 1}</span>
+              <span className="col-span-2 text-[13px] font-semibold text-accent num md:col-span-3">0{i + 1}</span>
               <h3 className="t-md col-span-10 md:col-span-5">{tr(p.title, lang)}</h3>
               <p className="col-span-10 col-start-3 text-[15px] text-muted md:col-span-4 md:col-start-auto">{tr(p.body, lang)}</p>
             </li>
@@ -182,28 +182,78 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
             <h3 className="border-t border-ink pt-4 text-[15px] font-medium">{tr(a.certifications, lang)}</h3>
             <ul className="mt-2">
               {education.certs.map((c) => (
-                <li key={c.name} className="flex items-baseline justify-between gap-4 border-b border-line py-3 text-[15px]">
-                  <span>{c.name}</span>
+                <li key={c.name.en} className="flex items-baseline justify-between gap-4 border-b border-line py-3 text-[15px]">
+                  <span>{tr(c.name, lang)}</span>
                   <span className="text-right text-[13px] text-muted">{tr(c.issuer, lang)}</span>
-                </li>
-              ))}
-            </ul>
-            <h3 className="mt-14 border-t border-ink pt-4 text-[15px] font-medium">{tr(a.languages, lang)}</h3>
-            <ul className="mt-2">
-              {languages.map((l, i) => (
-                <li key={i} className="border-b border-line py-3">
-                  <div className="flex items-baseline justify-between gap-4 text-[15px]">
-                    <span>{tr(l.name, lang)}</span>
-                    <span className="text-[13px] text-accent">{tr(l.level, lang)}</span>
-                  </div>
-                  <p className="mt-1 text-[13px] text-muted">{tr(l.use, lang)}</p>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </section>
+
+      {/* Languages, with CEFR levels as in the CV */}
+      <section id="languages" data-axis={tr(a.languages, lang)} aria-labelledby="lang-h" className="page pb-24 md:pb-36">
+        <Head index="06" label={tr(a.languages, lang)} id="lang-h" title={tr(a.languagesTitle, lang)} />
+        <div className="mt-10 overflow-x-auto">
+          <table className="w-full min-w-[640px] border-t border-ink text-left text-[14px]">
+            <thead className="label">
+              <tr className="border-b border-line">
+                <th className="py-3 pr-4 font-medium">{tr(a.language, lang)}</th>
+                <th className="py-3 pr-4 font-medium">{tr(a.level, lang)}</th>
+                <th className="py-3 pr-4 font-medium">{tr(a.speaking, lang)}</th>
+                <th className="py-3 pr-4 font-medium">{tr(a.writing, lang)}</th>
+                <th className="py-3 pr-4 font-medium">{tr(a.reading, lang)}</th>
+                <th className="py-3 font-medium">{tr(a.usedFor, lang)}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {languages.map((l) => (
+                <tr key={l.name.en} className="border-b border-line">
+                  <th scope="row" className="py-4 pr-4 text-[16px] font-medium">{tr(l.name, lang)}</th>
+                  <td className="py-4 pr-4 font-display text-[22px] font-extrabold text-accent">{l.level}</td>
+                  {[l.speak, l.write, l.read].map((v, k) => (
+                    <td key={k} className="py-4 pr-4">
+                      {v === null ? <span className="text-muted">·</span> : <Dots n={v} label={`${v} / 5`} />}
+                    </td>
+                  ))}
+                  <td className="py-4 text-[13px] text-muted">{tr(l.use, lang)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-[12px] text-muted">{tr(a.cefr, lang)}</p>
+      </section>
+
+      {/* Referees: names only, details in the CV */}
+      <section id="referees" data-axis={tr(a.referees, lang)} aria-labelledby="ref-h" className="page pb-24 md:pb-36">
+        <Head index="07" label={tr(a.referees, lang)} id="ref-h" title={tr(a.refereesTitle, lang)} />
+        <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[10px] bg-line sm:grid-cols-2 lg:grid-cols-5">
+          {referees.map((r) => (
+            <li key={r.name} className="reveal bg-bg p-5">
+              <p className="text-[16px] font-medium">{r.name}</p>
+              <p className="mt-1 text-[13px] text-muted">
+                {tr(r.role, lang)} · {r.org}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <a href={tr(person.cv, lang)} className="btn-ghost mt-8" download>
+          {tr(a.refereesCv, lang)} <span className="arrow">↓</span>
+        </a>
+      </section>
     </>
   )
 }
 
+
+function Dots({ n, label }: { n: number; label: string }) {
+  return (
+    <span className="inline-flex gap-[3px]" role="img" aria-label={label}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <i key={i} className={`block h-[7px] w-[11px] rounded-[1px] ${i < n ? "bg-accent" : "bg-line"}`} />
+      ))}
+    </span>
+  )
+}

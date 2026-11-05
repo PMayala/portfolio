@@ -95,7 +95,7 @@ export function GameWelcome() {
       <Status />
       <div className="mt-[64px] flex flex-col items-center">
         <Mark size={52} />
-        <div className="mt-[14px] text-[34px] font-extrabold italic tracking-[-0.04em]" style={{ fontFamily: "var(--font-display)" }}>
+        <div className="mt-[14px] text-[34px] font-extrabold italic tracking-normal" style={{ fontFamily: "var(--font-display)" }}>
           THEGAME
         </div>
       </div>

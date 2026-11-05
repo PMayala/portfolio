@@ -13,19 +13,21 @@ import Axis from "@/components/axis"
 import { pages } from "@/lib/work"
 import "../globals.css"
 
+// Inter (optical sizes, set to its Display cut) for text, Archivo condensed for the tall display type.
 const sans = localFont({
   src: [
-    { path: "../fonts/ZalandoSans.woff2", weight: "200 900", style: "normal" },
-    { path: "../fonts/ZalandoSans-Italic.woff2", weight: "200 900", style: "italic" },
+    { path: "../fonts/Inter.woff2", weight: "100 900", style: "normal" },
+    { path: "../fonts/Inter-Italic.woff2", weight: "100 900", style: "italic" },
   ],
   variable: "--font-sans",
   display: "swap",
 })
 
 const display = localFont({
-  src: [{ path: "../fonts/ZalandoSansExpanded.woff2", weight: "200 900", style: "normal" }],
+  src: [{ path: "../fonts/Archivo.woff2", weight: "100 900", style: "normal" }],
   variable: "--font-display",
   display: "swap",
+  declarations: [{ prop: "font-stretch", value: "62% 125%" }],
 })
 
 export function generateStaticParams() {
@@ -34,8 +36,8 @@ export function generateStaticParams() {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F2F1EC" },
-    { media: "(prefers-color-scheme: dark)", color: "#0E0E0D" },
+    { media: "(prefers-color-scheme: light)", color: "#F1F0EB" },
+    { media: "(prefers-color-scheme: dark)", color: "#121317" },
   ],
 }
 

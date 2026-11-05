@@ -9,10 +9,10 @@ const t = (en: string, fr: string): T => ({ en, fr })
 
 export const copy = {
   meta: {
-    role: t("Software engineer and product designer", "Ingénieur logiciel et designer produit"),
+    role: t("Software developer · DevOps · UI/UX", "Développeur logiciel · DevOps · UI/UX"),
     description: t(
-      "Plamedi Mayala, software engineer and product designer in Kigali. User centred, tested and monitored products in mobility, fintech and EV charging.",
-      "Plamedi Mayala, ingénieur logiciel et designer produit à Kigali. Des produits centrés utilisateur, testés et surveillés : mobilité, fintech et recharge électrique.",
+      "Plamedi Mayala, software developer in Kigali. Platform operations, monitoring with Grafana and Prometheus, infrastructure in Terraform, CI/CD and UI/UX, for mobility, fintech and EV charging.",
+      "Plamedi Mayala, développeur logiciel à Kigali. Exploitation de plateformes, supervision avec Grafana et Prometheus, infrastructure en Terraform, CI/CD et UI/UX, pour la mobilité, la fintech et la recharge électrique.",
     ),
     work: t("Work", "Projets"),
     workDescription: t("Case studies and client work in product design and software engineering.", "Études de cas et projets clients en design produit et ingénierie logicielle."),
@@ -77,6 +77,17 @@ export const copy = {
     education: t("Education", "Formation"),
     certifications: t("Certifications", "Certifications"),
     languages: t("Languages", "Langues"),
+    languagesTitle: t("My products ship in the languages I speak.", "Mes produits sortent dans les langues que je parle."),
+    language: t("Language", "Langue"),
+    level: t("Level", "Niveau"),
+    speaking: t("Speaking", "Oral"),
+    writing: t("Writing", "Écrit"),
+    reading: t("Reading", "Lecture"),
+    usedFor: t("Used for", "Usage"),
+    cefr: t("Level on the CEFR scale (A1 beginner to C2 mastery). Squares: 5 = fluent, 1 = basic.", "Niveau sur l'échelle du CECR (A1 débutant à C2 maîtrise). Carrés : 5 = courant, 1 = notions."),
+    referees: t("Referees", "Référents"),
+    refereesTitle: t("Happy to be contacted.", "Disponibles pour un échange."),
+    refereesCv: t("Contact details in the CV", "Coordonnées dans le CV"),
   },
 
   caseStudy: {
@@ -152,7 +163,7 @@ export const copy = {
     clients: t("Clients", "Clients"),
     pages: t("Pages", "Pages"),
     contact: t("Contact", "Contact"),
-    colophon: t("Set in Zalando Sans and Zalando Sans Expanded (SIL OFL). Built with Next.js.", "Composé en Zalando Sans et Zalando Sans Expanded (SIL OFL). Construit avec Next.js."),
+    colophon: t("Set in Archivo and Inter Display (SIL OFL), like the CV. Built with Next.js.", "Composé en Archivo et Inter Display (SIL OFL), comme le CV. Construit avec Next.js."),
   },
 
   cmd: {
@@ -188,7 +199,7 @@ export const copy = {
       t("Eight case studies: EV charging, fintech, transport, careers, mobility", "Huit études de cas : recharge électrique, fintech, transport, emploi, mobilité"),
       t("Client websites, Figma files and coded UI", "Sites clients, fichiers Figma et interfaces codées"),
       t("Field tests, usability scores and monitoring in production", "Tests terrain, scores d'utilisabilité et supervision en production"),
-      t("CV in English and French", "CV en anglais et en français"),
+      t("The November 2026 CV, in English and French", "Le CV de novembre 2026, en anglais et en français"),
     ],
   },
 
